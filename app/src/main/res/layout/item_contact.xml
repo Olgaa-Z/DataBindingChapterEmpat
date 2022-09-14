@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="listContact"
+            type="com.zfuncode.databindingchapterempat.dbrecyclerview.Contact" />
+        <variable
+            name="detailKlik"
+            type="com.zfuncode.databindingchapterempat.dbrecyclerview.ContactAdapter.ItemClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardContact"
+        android:onClick="@{()->detailKlik.onItemClicked(listContact)}"
+        android:backgroundTint="@color/grey"
+        android:elevation="5dp"
+        app:cardCornerRadius="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvNameContact"
+                android:text='@{listContact.name, default="Name"}'
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvPhoneContact"
+                android:text='@{listContact.phone, default="362756"}'
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                app:imageResource="@{listContact.img}"
+                android:id="@+id/imgContact"
+                android:layout_toRightOf="@+id/tvNameContact"
+                android:layout_width="60dp"
+                android:layout_height="50dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
